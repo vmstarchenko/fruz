@@ -1,0 +1,13 @@
+#! /usr/bin/env python
+
+import os
+import sys
+
+
+def main():
+    os.chdir(os.path.join(os.path.dirname(__file__), 'src'))
+    os.execv('./manage.py', ['./manage.py', ] + sys.argv[1:])
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,24 @@
+{% extends "extensions/base.html" %}
+
+{% block content %}
+  <div>
+    {% for time, time_name, floors in periods %}
+      <div class="panel panel-default
+                  {% if time < now %} period-closed
+                  {% elif time > now %} period-open
+                  {% else %} period-now{% endif %}">
+        <div class="panel-heading">{{ time_name }}</div>
+
+        <ul class="list-group">
+          {% for floor, audiences in floors %}
+            <li class="list-group-item">
+              <b>{{ floor }}-й этаж:</b>
+              {{ audiences }}
+            </li>
+          {% endfor %}
+        </ul>
+
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
