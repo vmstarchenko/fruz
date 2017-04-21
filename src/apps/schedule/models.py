@@ -9,5 +9,14 @@ class Period(models.Model):
     def __repr__(self):
         return '<Period %s: %d>' %(self.title, self.time)
 
-    def __repr__(self):
+    def __str__(self):
         return '<Period %s: %d>' %(self.title, self.time)
+
+class Audience(models.Model):
+    title = models.CharField(max_length=64)
+
+    def __repr__(self):
+        return '<Audience %s>' %self.title
+
+    def __str__(self):
+        return '<Audience %s>' %self.title
