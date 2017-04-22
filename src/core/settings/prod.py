@@ -9,7 +9,7 @@ ALLOWED_HOSTS = ALLOWED_HOSTS + ['fruz.herokuapp.com',]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_DIR, 'db', 'prod', 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'var', 'db', 'prod', 'db.sqlite3'),
     }
 }
 
