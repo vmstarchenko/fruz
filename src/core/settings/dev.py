@@ -9,7 +9,7 @@ INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + INTERNAL_APPS
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ALLOWED_HOSTS + ['0.0.0.0', 'localhost', ]
+ALLOWED_HOSTS = ALLOWED_HOSTS + ['0.0.0.0', 'localhost', '127.0.0.1',]
 
 DATABASES = {
     'default': {
