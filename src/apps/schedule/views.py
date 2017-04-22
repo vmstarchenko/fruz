@@ -18,7 +18,6 @@ def show_audiences(request):
             last_update.month != today.month or
             last_update.day != today.day):
         was_updated = True
-        print('update')
         results = update_periods_database()
         all_periods = results['new_periods']
         data_config.save()
