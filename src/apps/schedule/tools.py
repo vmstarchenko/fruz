@@ -1,6 +1,10 @@
 import json
 import itertools
 import re
+import datetime
+
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode
 
 from .models import Audience, Period
 
@@ -21,7 +25,8 @@ VERBOSE_PERIODS = {
     7: 'Восьмая пара (19:40 - 21:00)',
 }
 
-RE_NUMBER = re.compile("^")
+RE_NUMBER = re.compile('^')
+
 
 def detect_time(time):
     hour, minute = time.hour, time.minute
@@ -43,10 +48,24 @@ def get_available_audiences():
 
 def load_new_audiences():
     try:
-        with open('../../trying/lessons.json') as f:  # TODO: fix
-            return json.loads(f.read())
+        today = datetime.datetime.today()
+
+        today_date = '%04d.%02d.%02d' % (today.year, today.month, today.day)
+
+        req = Request('http://ruz.hse.ru/RUZService.svc/lessons?%s' % (
+            urlencode({'fromdate': today_date, 'todate': today_date})
+        ))
+        req.add_header(
+            'User-Agent', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0')
+
+        resp = urlopen(req)
+        content = resp.read()
+
+        return json.loads(content.decode())
+        # with open('../../trying/lessons.json') as f:  # TODO: fix
+        #     return json.loads(f.read())
     except:
-        print('Error') # TODO: fix
+        print('Error')  # TODO: fix
         return []
 
 
@@ -56,11 +75,11 @@ def lesson_begin_to_number(begin):
             '18:10': 6, '19:40': 7, }.get(begin, None)
 
 
-def update_periods_database():
+def update_periods_database(new_audiences):
     available_audiences = get_available_audiences()
     new_audiences = list(filter(
         lambda data: 'Кочновский' in data.get('building', ''),
-        load_new_audiences()))
+        new_audiences))
 
     busy_audiences = set()
     for lesson in new_audiences:
