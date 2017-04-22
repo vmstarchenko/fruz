@@ -34,7 +34,7 @@ SECRET_KEY = ')!4mpnra51^lr7zo#8$%@q-5$980#-!0x5*a7&825sau+nk@%k'
 ALLOWED_HOSTS = []
 
 # Application definition
-VERSION = '1'
+VERSION = '2'
 
 
 DJANGO_APPS = [
@@ -136,7 +136,7 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/' # or use version: '/static/%s/' %VERSION
+STATIC_URL = '/static/%s/' %VERSION
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'var', 'www', VERSION)
 
