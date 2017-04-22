@@ -28,7 +28,6 @@ def show_audiences(request):
     context = {
         'periods': ordered_periods,
         'now': detect_time(datetime.datetime.today())
-        'debug': 
     }
     return render(request, 'schedule/show_audience.html', context)
 
