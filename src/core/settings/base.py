@@ -28,6 +28,7 @@ sys.path.insert(0, os.path.join(PROJECT_DIR, 'apps'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')!4mpnra51^lr7zo#8$%@q-5$980#-!0x5*a7&825sau+nk@%k'
 
+ALLOWED_HOSTS = []
 
 # Application definition
 VERSION = '1'
