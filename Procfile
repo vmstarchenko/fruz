@@ -1,2 +1,2 @@
 web: gunicorn --pythonpath src "core.wsgi:application"
-clock: python clock.py
+worker: ./src/manage.py runscript clock --pythonpath=src
