@@ -101,7 +101,7 @@ def update_periods_database(new_audiences):
     Period.objects.bulk_create(new_periods)
     return {
         'new_lessons': len(new_periods),
-        'unknown_lessons': len(busy_audiences - all_audiences)
+        'unknown_lessons': list(busy_audiences - all_audiences)
     }
 
 

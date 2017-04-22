@@ -6,3 +6,4 @@ gunicorn --pythonpath src "core.wsgi:application"
 ## TODO:
   - add update by cron
   - favicon.ico
+  - domain name
