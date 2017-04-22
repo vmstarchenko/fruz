@@ -15,15 +15,19 @@ def show_audiences(request):
     last_update = data_config.last_update
     was_updated = False
     if (last_update.year != today.year or
-        last_update.month != today.month or
-        last_update.day != today.day):
+            last_update.month != today.month or
+            last_update.day != today.day):
         was_updated = True
-        update_periods_database()
+        print('update')
+        results = update_periods_database()
+        all_periods = results['new_periods']
         data_config.save()
+    else:
+        all_periods = Period.objects.all()
 
     periods = DDict(lambda: DDict(list))
 
-    for period in Period.objects.all():
+    for period in all_periods:
         periods[period.time][period.floor].append(period)
 
     # order audiences and floors
