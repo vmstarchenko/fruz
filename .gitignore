@@ -6,7 +6,6 @@
 
 # db files
 var/db/dev/db.sqlite3
-var/db/prod/db.sqlite3
 
 ## Python ######################################################################
 
