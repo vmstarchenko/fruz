@@ -8,8 +8,13 @@ ALLOWED_HOSTS = ALLOWED_HOSTS + ['fruz.herokuapp.com',]
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'var', 'db', 'prod', 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_db',
+        'USER': 'admin_me',
+        'PASSWORD': 'adminadminquerty',
+        'HOST': 'fruz.herokuapp.com',
+        'PORT': '5432',
+
     }
 }
 

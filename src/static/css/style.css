@@ -1,3 +1,19 @@
-.period-now .panel-heading{
-   background: #f5f5dc
+.period-now .panel-heading {
+  background: #a5f5dc
+}
+
+.period-close .panel-heading {
+  background: #8D8D8D;
+  color: #fff;
+}
+
+.period-open .panel-heading {
+  background: #f5f5dc;
+}
+
+.navbar {
+  background: #7D7D9D;
+}
+.navbar-default .navbar-brand {
+  color: #fff;
 }
