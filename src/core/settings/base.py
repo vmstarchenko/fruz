@@ -19,6 +19,9 @@ PROJECT_DIR = os.path.dirname(CORE_DIR) # src dir
 BASE_DIR = os.path.dirname(PROJECT_DIR) # project root dir
 
 # Append folders to path
+sys.path.insert(0, os.path.join(CORE_DIR))
+sys.path.insert(0, os.path.join(PROJECT_DIR))
+sys.path.insert(0, os.path.join(BASE_DIR))
 sys.path.insert(0, os.path.join(PROJECT_DIR, 'lib'))
 sys.path.insert(0, os.path.join(PROJECT_DIR, 'apps'))
 
@@ -81,7 +84,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = 'src.core.wsgi.application'
 
 
 # Database
