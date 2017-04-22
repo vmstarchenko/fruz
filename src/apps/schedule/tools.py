@@ -33,9 +33,8 @@ def detect_time(time):
 
     i = 0
     for p_hour, p_minute in PERIODS_ENDS:
-        if hour <= p_hour:
-            if minute <= p_minute:
-                break
+        if hour < p_hour or (hour == p_hour and minute < p_minute):
+            break
         i += 1
     return i
 
