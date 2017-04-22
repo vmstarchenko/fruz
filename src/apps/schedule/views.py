@@ -11,13 +11,15 @@ from .tools import (
 
 def show_audiences(request):
     today = datetime.datetime.today()
-    last_update = DataConfig.get_solo().last_update
+    data_config = DataConfig.get_solo()
+    last_update = data_config.last_update
     was_updated = False
     if (last_update.year != today.year or
         last_update.month != today.month or
         last_update.day != today.day):
         was_updated = True
         update_periods_database()
+        data_config.save()
 
     periods = DDict(lambda: DDict(list))
 
