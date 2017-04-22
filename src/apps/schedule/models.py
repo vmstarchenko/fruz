@@ -1,4 +1,5 @@
 from django.db import models
+from solo.models import SingletonModel
 
 # Create your models here.
 class Period(models.Model):
@@ -20,3 +21,12 @@ class Audience(models.Model):
 
     def __str__(self):
         return '<Audience %s>' %self.title
+
+class DataConfig(SingletonModel):
+    last_update = models.DateField(auto_now=True)
+
+    def __repr__(self):
+        return '<Config %s>' %(str(self.last_update))
+
+    def __str__(self):
+        return '<Config %s>' %(str(self.last_update))

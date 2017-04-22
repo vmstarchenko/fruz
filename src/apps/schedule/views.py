@@ -4,12 +4,21 @@ from collections import defaultdict as DDict
 
 from django.shortcuts import render, HttpResponse
 
-from .models import Period
+from .models import Period, DataConfig
 from .tools import (
     VERBOSE_PERIODS, detect_time, load_new_audiences, update_periods_database)
 
 
 def show_audiences(request):
+    today = datetime.datetime.today()
+    last_update = DataConfig.get_solo().last_update
+    was_updated = False
+    if (last_update.year != today.year or
+        last_update.month != today.month or
+        last_update.day != today.day):
+        was_updated = True
+        update_periods_database()
+
     periods = DDict(lambda: DDict(list))
 
     for period in Period.objects.all():
@@ -27,7 +36,9 @@ def show_audiences(request):
 
     context = {
         'periods': ordered_periods,
-        'now': detect_time(datetime.datetime.today()),
+        'now': detect_time(today),
+        'today': today,
+        'was_updated': was_updated,
     }
     return render(request, 'schedule/show_audience.html', context)
 

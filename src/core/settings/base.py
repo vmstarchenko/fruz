@@ -47,6 +47,7 @@ DJANGO_APPS = [
 ]
 
 EXTERNAL_APPS = [
+    'solo'
 ]
 
 INTERNAL_APPS = [

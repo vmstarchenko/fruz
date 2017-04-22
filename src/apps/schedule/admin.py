@@ -1,6 +1,8 @@
 from django.contrib import admin
-from .models import Period, Audience
+from solo.admin import SingletonModelAdmin
+from .models import Period, Audience, DataConfig
+
 
 admin.site.register(Period)
 admin.site.register(Audience)
-# Register your models here.
+admin.site.register(DataConfig, SingletonModelAdmin)

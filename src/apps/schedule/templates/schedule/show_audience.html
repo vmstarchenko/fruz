@@ -2,6 +2,11 @@
 
 {% block content %}
   <div>
+    {% if was_updated %}
+      <div class="alert alert-info" role="alert">
+        <strong>Info:</strong> database was updated.
+      </div>
+    {% endif %}
     {% for time, time_name, floors in periods %}
       <div class="panel panel-default
                   {% if time < now %} period-close
