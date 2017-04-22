@@ -100,6 +100,10 @@ def update_periods_database(new_audiences):
 
     Period.objects.all().delete()
     Period.objects.bulk_create(new_periods)
+    return {
+        'new_lessons': len(new_periods),
+        'unknown_lessons': len(busy_audiences - all_audiences)
+    }
 
 
 def parse_floor(floor):

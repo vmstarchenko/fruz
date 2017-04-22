@@ -15,4 +15,5 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.show_audiences, name='show_audiences'),
+    url(r'^update_periods/$', views.update_periods, name='update_periods'),
 ]
