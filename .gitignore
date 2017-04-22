@@ -5,7 +5,8 @@
 *tmp*
 
 # db files
-*/db/*
+var/db/dev/db.sqlite3
+var/db/prod/db.sqlite3
 
 ## Python ######################################################################
 
@@ -30,7 +31,7 @@ __pycache__/
 *lib64/
 *parts/
 *sdist/
-*var/
+*var/www
 *.egg-info/
 *.installed.cfg
 *.egg
