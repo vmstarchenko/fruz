@@ -74,7 +74,10 @@ def lesson_begin_to_number(begin):
             '18:10': 6, '19:40': 7, }.get(begin, None)
 
 
-def update_periods_database(new_audiences):
+def update_periods_database(new_audiences=None):
+    if new_audiences is None:
+        new_audiences = load_new_audiences()
+
     available_audiences = get_available_audiences()
     new_audiences = list(filter(
         lambda data: 'Кочновский' in data.get('building', ''),
